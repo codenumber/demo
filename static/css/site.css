@@ -1,13 +1,60 @@
-#v1 {
-	border: 1px solid red;
+body {
+	background: white;
 }
-#bg {
-	width: 300px;
-	height: 300px;
-	background: url('../imgs/dev2.jpg')
+#templ {
+	margin: 40px 0px 50px 0;
 }
-#bg1 {
-	width: 300px;
+.mint-swipe-item {
 	height: 300px;
-	background: url('../imgs/dev3.jpg');
+	width: 100%;
+	background: red;
+}
+.mint-swipe {
+	height: 300px;
+}
+.mint-swipe img {
+	width: 100%;
+	height: 300px;
+}
+.mui-grid-view.mui-grid-9,.mui-grid-view.mui-grid-9 .mui-table-view-cell.mui-active {
+	background: white;
+}
+.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+	border-right: 0;
+	border-bottom: 0;
+}
+.mui-grid-view.mui-grid-9 {
+	border-top: 0;
+	border-left: 0;
+}
+.mui-table-view  .mui-icon-home:before,
+.mui-table-view .mui-icon-email:before,
+.mui-table-view .mui-icon-chatbubble:before,
+.mui-table-view .mui-icon-location:before,
+.mui-table-view .mui-icon-search:before,
+.mui-table-view .mui-icon-phone:before 
+{
+	content: '';
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	background-repeat: round;
+}
+.mui-table-view  .mui-icon-home:before {
+	background-image: url('../imgs/1.png');
+}
+.mui-table-view .mui-icon-email:before {
+	background-image: url('../imgs/2.png');
+}
+.mui-table-view .mui-icon-chatbubble:before {
+	background-image: url('../imgs/3.png');
+}
+.mui-table-view .mui-icon-location:before {
+	background-image: url('../imgs/4.png');
+}
+.mui-table-view .mui-icon-search:before {
+	background-image: url('../imgs/5.png');
+}
+.mui-table-view .mui-icon-phone:before {
+	background-image: url('../imgs/6.png');
 }
