@@ -34,6 +34,8 @@
 <script>
 	import {Toast} from 'mint-ui'
 	import axios from 'axios'
+	import common from '../kits/common.js'
+	
 	export default {
 		data() {
 			return {
@@ -45,7 +47,7 @@
 		},
 		methods: {
 			getBannerImg() {
-				let url = "https://gank.io/api/v2/banners"
+				let url = common.domain + "/api/v2/banners"
 				axios.get(url)
 					.then((res) => {
 						if (res.data.status != 100) {

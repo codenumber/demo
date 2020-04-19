@@ -8,6 +8,7 @@
 			<img :src="info.images" alt="">
 			<div class="htmlTemp" v-highlight v-html="info.markdown"></div>
 		</div>
+		<comment :id="id"></comment>
 	</div>
 </template>
 
@@ -15,30 +16,40 @@
 	import axios from 'axios'
 	import {Toast} from 'mint-ui'
 	import marked from 'marked' //处理请求回来的Markdown语法数据
+	import common from '../../kits/common.js'
+	import comment from '../subcomponents/comment.vue'
 	
 	export default {
 		data() {
 			return {
-				info: {}
+				info: {},
+				id: ''
 			}
 		},
 		created() {
 			this.getNewsInfo()
+			this.id = this.$route.params.id
 		},
 		methods: {
 			getNewsInfo() {
-				let url = "https://gank.io/api/v2/post/" + this.$route.params.id
+				let url = common.domain + "/api/v2/post/" + this.$route.params.id
 				axios.get(url)
 					.then( res => {
 						if (res.data.status != 100) {
 							return Toast('获取失败')
 						}
-						res.data.data.markdown = marked(res.data.data.markdown,{ sanitize: true }) //用Markdown出错，用marked
-						this.info = res.data.data
 						
+						res.data.data.markdown = marked(res.data.data.markdown,{ sanitize: true, gfm: true,tables: true, smartLists: true}) //用Markdown出错，用marked
+						this.info = res.data.data
+						//请求回来的数据有一个出错，避免报错
+						
+						this.info.images = this.info.images.length > 1 ? this.info.images[0] : this.info.images 
 						
 					})
 			}
+		},
+		components: {
+			comment,
 		}
 	}
 	
@@ -70,19 +81,26 @@
 		font-size: 20px;
 		margin-left: 5px
 	}
-	.htmlTemp >>> ul {
+	.htmlTemp >>> ul{
+		margin: 0;
+		padding: 0;
 		list-style-type: none;
 	}
+	 .htmlTemp >>> ol {
+		 margin: 0;
+		 padding: 0;
+	 }
 	.htmlTemp >>> ul li {
-		margin-left: -20px;
 		font-size: 14px;
 	}
-	.htmlTemp >>> img, .htmlTemp >>> table{
+	.htmlTemp >>> img, .htmlTemp >>> table,table{
 		width: 100%;
 		overflow: hidden;
+		margin: 0;
 	}
-	.htmlTemp >>> p {
+	.htmlTemp >>> p:not(>img) {
 		text-indent: 20px;
 		margin: 5px 0 0 5px;
 	}
+	
 </style>

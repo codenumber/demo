@@ -18,6 +18,7 @@
 <script>
 	import axios from 'axios'
 	import {Toast} from 'mint-ui'
+	import common from '../../kits/common.js'
 	
 	export default {
 		data() {
@@ -30,7 +31,7 @@
 		},
 		methods: {
 			getNews() {
-				let url = "https://gank.io/api/v2/data/category/GanHuo/type/Android/page/1/count/10"
+				let url = common.domain + "/api/v2/data/category/GanHuo/type/Android/page/1/count/10"
 				axios.get(url)
 					.then(res => {
 						if(res.data.status != 100) {
@@ -42,6 +43,9 @@
 						}
 					})
 			}
+		},
+		components: {
+		
 		}
 	}
 </script>

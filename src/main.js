@@ -10,7 +10,7 @@ import Mint from 'mint-ui'
 import axios from 'axios'
 import moment from 'moment'
 import hljs from 'highlight.js/lib/highlight';
-import 'highlight.js/styles/atom-one-dark.css';
+import 'highlight.js/styles/github.css';
 
 import 'mint-ui/lib/style.min.css'
 
