@@ -39,7 +39,7 @@
 							return Toast('获取失败')
 						}
 						
-						res.data.data.markdown = marked(res.data.data.markdown,{ sanitize: true, gfm: true,tables: true, smartLists: true}) //用Markdown出错，用marked
+						res.data.data.markdown = marked(res.data.data.markdown,{ gfm: true,tables: true,breaks:true}) //用Markdown出错，用marked
 						this.info = res.data.data
 						//请求回来的数据有一个出错，避免报错
 						

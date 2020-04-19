@@ -35,7 +35,7 @@ Vue.filter('datefmt', function(input,datafmtString) {
 
 let router = new VueRouter({
 	routes: [
-		{path: '', component: Home},
+		{path: '/', redirect: '/Home'},
 		{path: '/Home', component: Home},
 		{path: '/shopCar', component: shopCar},
 		{path: '/news/newslist',component: newsList},
