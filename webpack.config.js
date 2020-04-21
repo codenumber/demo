@@ -18,12 +18,8 @@ module.exports = {
 				loader: 'style-loader!css-loader!less-loader'
 			},
 			{
-				test: /\.(jpg|png|gif|ttf|woff)$/,
+				test: /\.(jpg|png|gif|ttf|woff|svg)$/,
 				loader: 'url-loader'
-			},
-			{
-				test: /\.(tff|woff|woff2)$/,
-				loader: 'file-loader'
 			},
 			{
 				test: /\.js$/,

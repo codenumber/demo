@@ -1,17 +1,14 @@
 <template>
 	<div id="templ">
 		<div >
-			<p class="title">{{info.title}}</p>
+			<h3 class="title">{{info.title}}</h3>
 			<p class="titleDesc">作者：<span>{{info.author}}</span>时间：<span>{{info.createdAt | datefmt('YYYY/MM/DD')}}</span>分类：<span>{{info.category}}</span> </p>
 		</div>
 		<div class="content">
-			<img :src="info.images" alt="">
 			<div class="mui-content">
 				<ul class="mui-table-view mui-grid-view mui-grid-9">
-					 <li  class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" >
-						    <viewer >
-						      <img v-for="src in info.content" :src="src" :key="src">{{src}}
-						    </viewer>
+					 <li  class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" v-viewer v-for="item of info.content">
+						<img :src="item">
 					</li>
 				</ul> 
 			</div>
@@ -31,7 +28,8 @@
 		data() {
 			return {
 				id: "",
-				info:[]
+				info:[],
+				list: []
 			}
 		},
 		created() {
@@ -46,10 +44,19 @@
 						return Toast('数据获取错误')
 					}
 					this.info = res.data.data
-				
-					let list =this.info.content.match(/<img[\s\w/'/"/\d/=:.\u4e00-\u9fa5]+>/gim)
+					let re = /<img.*?src="(.*?)".*?\/?>/g
+					let list = []
+					while (true) {
+						let result = re.exec(this.info.content)
+						if(result != null) {
+							list.push(result["1"])
+						}else {
+							break
+						}
+					}
 					this.info.content = list
 					
+					console.log(this.info.content)
 				})
 			}
 		},
@@ -60,5 +67,22 @@
 </script>
 
 <style scoped>
+	h3.title {
+		color: #0000EE;
+		
+	}
 	
+	.content li, .content img {
+		width: 90px;
+		height: 90px;
+	}
+	.titleDesc {
+		margin-bottom: 5px;
+	}
+	.titleDesc span {
+		margin-right: 10px;
+	}
+	.mui-content>.mui-table-view:first-child  {
+		margin-top: 5px;
+	}
 </style>

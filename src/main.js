@@ -20,8 +20,7 @@ import '../static/mui/css/mui.css'
 import '../static/mui/css/mui.min.css'
 import '../static/css/site.css'
 import 'viewerjs/dist/viewer.css'
-import Viewer from 'v-viewer'
-
+ import Viewer from 'v-viewer'
 
 Vue.use(Viewer)
 Vue.use(VueRouter)
