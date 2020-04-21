@@ -5,6 +5,8 @@ import Home from './components/Home.vue'
 import shopCar from './components/shopcar/shopcar.vue'
 import newsList from './components/news/newslist.vue'
 import newsInfo from './components/news/newsinfo.vue'
+import photoList from './components/photo/photolist.vue'
+import photoInfo from './components/photo/photoinfo.vue'
 
 import Mint from 'mint-ui'
 import axios from 'axios'
@@ -17,7 +19,11 @@ import 'mint-ui/lib/style.min.css'
 import '../static/mui/css/mui.css'
 import '../static/mui/css/mui.min.css'
 import '../static/css/site.css'
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'v-viewer'
 
+
+Vue.use(Viewer)
 Vue.use(VueRouter)
 Vue.use(Mint)
 
@@ -39,7 +45,9 @@ let router = new VueRouter({
 		{path: '/Home', component: Home},
 		{path: '/shopCar', component: shopCar},
 		{path: '/news/newslist',component: newsList},
-		{path: '/news/newsinfo/:id',component: newsInfo}
+		{path: '/news/newsinfo/:id',component: newsInfo},
+		{path: '/photo/photolist',component: photoList},
+		{path: '/photolist/photoinfo/:id', component: photoInfo}
 	],
 	linkActiveClass: 'mui-active'
 })

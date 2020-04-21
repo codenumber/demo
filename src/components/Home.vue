@@ -26,7 +26,7 @@
 				                    <span class="mui-icon mui-icon-phone"></span>
 				                    <div class="mui-media-body">联系我们</div></router-link></li>
 				        </ul> 
-				</div>
+		</div>
 		
 	</div>
 </template>
